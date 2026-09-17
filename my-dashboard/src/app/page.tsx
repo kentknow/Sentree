@@ -1,5 +1,5 @@
-import NodeReadings from "@/components/Node_Readings";
+import Home from "@/components/Home";
 
-export default function Home() {
-  return <NodeReadings />;
+export default function HomePage() {
+  return <Home/>;
 }

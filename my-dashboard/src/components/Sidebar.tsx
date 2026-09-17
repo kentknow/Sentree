@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { 
   Home, 
   Activity, 
@@ -11,6 +13,17 @@ import {
 } from "lucide-react";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
+  const navItems = [
+    { name: "Home/Overview", href: "/", icon: Home },
+    { name: "Node Readings", href: "/node-readings", icon: Activity },
+    { name: "Historical Data", href: "/historical-data", icon: History },
+    { name: "Alerts & Incidents", href: "/", icon: Bell },
+    { name: "Device Configuration", href: "/device-configuration", icon: Settings },
+    { name: "User Management", href: "/", icon: Users },
+  ];
+
   return (
     <aside className="w-64 border-r border-emerald-900/40 p-6 flex flex-col justify-between bg-[#0b1a16] min-h-screen">
       <div>
@@ -24,30 +37,25 @@ export default function Sidebar() {
 
         {/* Nav Items */}
         <nav className="space-y-3">
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-emerald-900/30 transition">
-            <Home className="w-5 h-5" />
-            <span>Home/Overview</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-emerald-900/50 text-emerald-300 font-medium border-l-4 border-emerald-400">
-            <Activity className="w-5 h-5" />
-            <span>Node Readings</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-emerald-900/30 transition">
-            <History className="w-5 h-5" />
-            <span>Historical Data</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-emerald-900/30 transition">
-            <Bell className="w-5 h-5" />
-            <span>Alerts & Incidents</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-emerald-900/30 transition">
-            <Settings className="w-5 h-5" />
-            <span>Device Configuration</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-emerald-900/30 transition">
-            <Users className="w-5 h-5" />
-            <span>User Management</span>
-          </a>
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href;
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition ${
+                  isActive
+                    ? "bg-emerald-900/50 text-emerald-300 font-medium border-l-4 border-emerald-400"
+                    : "text-slate-300 hover:bg-emerald-900/30"
+                }`}
+              >
+                <Icon className="w-5 h-5" />
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </aside>
