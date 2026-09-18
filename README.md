@@ -25,8 +25,8 @@ Step 3: Install Project Dependencies
 Now that Node.js is installed, navigate to your project folder where your package.json file lives to download all required JavaScript libraries (recharts, lucide-react, next, react, etc.).
 
 Open your terminal and change directory to your dashboard root folder:
-cd location\Sentree\my-dashboard
-npm install
+*cd location\Sentree\my-dashboard*
+*npm install*
 
 Step 4: Run Your Project
 Once npm install finishes, start your local development server:
