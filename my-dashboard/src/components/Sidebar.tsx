@@ -19,9 +19,9 @@ export default function Sidebar() {
     { name: "Home/Overview", href: "/", icon: Home },
     { name: "Node Readings", href: "/node-readings", icon: Activity },
     { name: "Historical Data", href: "/historical-data", icon: History },
-    { name: "Alerts & Incidents", href: "/", icon: Bell },
+    { name: "Alerts & Incidents", href: "/alerts-incidents", icon: Bell },
     { name: "Device Configuration", href: "/device-configuration", icon: Settings },
-    { name: "User Management", href: "/", icon: Users },
+    { name: "User Management", href: "/user-management", icon: Users },
   ];
 
   return (
